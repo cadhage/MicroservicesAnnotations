@@ -1,0 +1,45 @@
+# Ignore compiled class files
+*.class
+
+# Ignore log files
+*.log
+
+# Ignore the target directory (where Maven/Gradle builds your project)
+target/
+
+# Ignore the .mvn directory (Maven wrapper files)
+.mvn/
+
+# Ignore the .idea directory (IntelliJ IDEA project files)
+.idea/
+
+# Ignore Eclipse project files
+.project
+.classpath
+.settings/
+
+# Ignore dependency directories
+/.mvn/
+.gradle/
+
+# Ignore the Spring Boot DevTools cache
+.spring-boot-devtools/
+
+# Ignore Maven local repository (this can be quite large)
+.m2/
+
+# Ignore application configuration files (if you have environment-specific config files)
+application-dev.yml
+application-prod.yml
+
+# Ignore node_modules (if using front-end assets)
+node_modules/
+
+# Ignore build tools related to front-end (for example, npm or yarn)
+yarn-error.log
+npm-debug.log
+
+# Ignore OS-specific files
+.DS_Store         # macOS
+Thumbs.db         # Windows
+*.swp             # Vim swap files
