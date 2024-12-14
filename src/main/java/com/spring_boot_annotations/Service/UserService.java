@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service  // Marks this class as a service.
-public class UserService {
+public abstract class UserService {
 
     @Autowired  // Injects the UserRepository automatically.
     private UserRepository userRepository;
@@ -29,4 +29,5 @@ public class UserService {
         return user.orElse(null);
     }
 
+    public abstract String getUserType();
 }

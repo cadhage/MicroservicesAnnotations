@@ -7,6 +7,7 @@ import com.spring_boot_annotations.Service.UserService;
 import jakarta.persistence.Cacheable;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -66,5 +67,24 @@ public class UserController {
         userRepository.save(user);
 
         return ResponseEntity.ok(user);
+    }
+    private final UserService basicUserService;  // Will use the @Primary service by default
+    private final UserService premiumUserService;  // Will use the @Qualifier service
+
+    // Constructor injection
+    public UserController(UserService basicUserService,
+                          @Qualifier("premiumUserService") UserService premiumUserService) {
+        this.basicUserService = basicUserService;
+        this.premiumUserService = premiumUserService;
+    }
+
+    @GetMapping("/basic-user")
+    public String getBasicUserInfo() {
+        return basicUserService.getUserType(); // This will return "Basic User"
+    }
+
+    @GetMapping("/premium-user")
+    public String getPremiumUserInfo() {
+        return premiumUserService.getUserType(); // This will return "Premium User"
     }
 }
